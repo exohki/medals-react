@@ -16,12 +16,20 @@ body {
   font-size: 2.5rem;
 }
 
+.countries-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
 .country-card {
   background: white;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
+  width: 250px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  display: inline-block;
+  text-align: center;
 }
 
 .medal-text {
@@ -29,17 +37,41 @@ body {
   margin: 1rem 0;
 }
 
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
 .medal-button {
   background-color: gold;
   border: none;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   border-radius: 8px;
   cursor: pointer;
+  flex: 1;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .medal-button:hover {
   background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: darkred;
   transform: scale(1.05);
 }
