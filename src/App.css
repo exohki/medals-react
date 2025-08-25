@@ -27,35 +27,58 @@ body {
   background: white;
   border-radius: 12px;
   padding: 1.5rem;
-  width: 250px;
+  width: 280px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.medal-text {
-  font-size: 1.25rem;
+.medals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   margin: 1rem 0;
 }
 
-.button-group {
+.medal-card {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
+  align-items: center;
 }
 
 .medal-button {
-  background-color: gold;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  flex: 1;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.medal-button:hover {
+.medal-button.gold {
+  background-color: gold;
+}
+
+.medal-button.gold:hover {
   background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+.medal-button.silver {
+  background-color: silver;
+}
+
+.medal-button.silver:hover {
+  background-color: #bfbfbf;
+  transform: scale(1.05);
+}
+
+.medal-button.bronze {
+  background-color: #cd7f32;
+  color: white;
+}
+
+.medal-button.bronze:hover {
+  background-color: #a0522d;
   transform: scale(1.05);
 }
 
@@ -67,7 +90,7 @@ body {
   font-size: 0.9rem;
   border-radius: 8px;
   cursor: pointer;
-  flex: 1;
+  margin-top: 1rem;
   transition: transform 0.2s ease, background-color 0.3s ease;
 }
 

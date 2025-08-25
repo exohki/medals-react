@@ -1,20 +1,26 @@
 import React from "react";
+import Medal from "./Medal";
 import "./App.css";
 
-function Country({ id, name, gold, onIncrement, onDelete }) {
+function Country({ country, medals, onIncrement, onDelete }) {
   return (
     <div className="country-card">
-      <h2>{name}</h2>
-      <p className="medal-text">Gold Medals: <strong>{gold}</strong></p>
-      
-      <div className="button-group">
-        <button className="medal-button" onClick={() => onIncrement(id)}>
-          Add Gold Medal 🥇
-        </button>
-        <button className="delete-button" onClick={() => onDelete(id)}>
-          ❌ Remove Country
-        </button>
+      <h2>{country.name}</h2>
+
+      <div className="medals-container">
+        {medals.map((medal) => (
+          <Medal
+            key={medal.id}
+            medal={medal}
+            count={country[medal.name]}
+            onIncrement={() => onIncrement(country.id, medal.name)}
+          />
+        ))}
       </div>
+
+      <button className="delete-button" onClick={() => onDelete(country.id)}>
+        ❌ Remove Country
+      </button>
     </div>
   );
 }
