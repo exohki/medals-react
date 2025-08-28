@@ -1,16 +1,28 @@
 import React from "react";
 import "./App.css";
 
-function Medal({ medal, count, onIncrement }) {
+function Medal({ medal, count, countryId, onIncrement, onDecrement }) {
   return (
     <div className="medal-card">
       <p>
         {medal.name.charAt(0).toUpperCase() + medal.name.slice(1)}:{" "}
         <strong>{count}</strong>
       </p>
-      <button className={`medal-button ${medal.name}`} onClick={onIncrement}>
-        Add {medal.name} 🏅
-      </button>
+      <div className="button-group">
+        <button
+          className={`medal-button ${medal.name}`}
+          onClick={() => onIncrement(countryId, medal.name)}
+        >
+          +
+        </button>
+        <button
+          className={`medal-button ${medal.name}`}
+          onClick={() => onDecrement(countryId, medal.name)}
+          disabled={count === 0}
+        >
+          –
+        </button>
+      </div>
     </div>
   );
 }

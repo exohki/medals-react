@@ -1,100 +1,135 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
   margin: 0;
   padding: 0;
+  color: #333;
+  line-height: 1.6;
 }
 
 .app-container {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 1.5rem;
 }
 
 .title {
-  color: #222;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 2.5rem;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .countries-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
+}
+
+.overall-totals {
+  background: #ffffff;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: inline-block;
+  text-align: left;
+  font-weight: 500;
+  min-width: 300px;
 }
 
 .country-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 280px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .medals-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin: 1rem 0;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
 .medal-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background: #f7f9fc;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .medal-button {
   border: none;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .medal-button.gold {
-  background-color: gold;
-}
-
-.medal-button.gold:hover {
-  background-color: #e6b800;
-  transform: scale(1.05);
+  background: linear-gradient(145deg, #ffd700, #ffcc33);
+  color: #333;
 }
 
 .medal-button.silver {
-  background-color: silver;
-}
-
-.medal-button.silver:hover {
-  background-color: #bfbfbf;
-  transform: scale(1.05);
+  background: linear-gradient(145deg, #d4d4d4, #bfbfbf);
+  color: #333;
 }
 
 .medal-button.bronze {
-  background-color: #cd7f32;
-  color: white;
+  background: linear-gradient(145deg, #cd7f32, #b0662b);
+  color: #fff;
 }
 
-.medal-button.bronze:hover {
-  background-color: #a0522d;
-  transform: scale(1.05);
+.medal-button:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.medal-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .delete-button {
-  background-color: crimson;
-  color: white;
+  background-color: #e74c3c;
+  color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 12px;
   cursor: pointer;
-  margin-top: 1rem;
-  transition: transform 0.2s ease, background-color 0.3s ease;
+  margin-top: 1.5rem;
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .delete-button:hover {
-  background-color: darkred;
+  background-color: #c0392b;
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
