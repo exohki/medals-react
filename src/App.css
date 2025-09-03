@@ -133,3 +133,85 @@ body {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
+
+.new-country {
+  margin: 2rem 0;
+}
+
+.add-btn {
+  background: linear-gradient(145deg, #4caf50, #45a049);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background: linear-gradient(145deg, #43a047, #388e3c);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.country-dialog {
+  padding: 2rem;
+  border: none;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  min-width: 320px;
+}
+
+.country-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.country-dialog input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.dialog-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dialog-actions button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.dialog-actions button:first-child:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dialog-actions button:last-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+.dialog-actions button:last-child:hover {
+  background-color: #bbb;
+  transform: scale(1.05);
+}

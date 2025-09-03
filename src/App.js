@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Country from "./Country";
+import NewCountry from "./NewCountry";
 import "./App.css";
 
 function App() {
@@ -39,6 +40,18 @@ function App() {
     setCountries(countries.filter((country) => country.id !== id));
   };
 
+  const addCountry = (name) => {
+    if (!name.trim()) return; 
+    const newCountry = {
+      id: countries.length + 1,
+      name,
+      gold: 0,
+      silver: 0,
+      bronze: 0,
+    };
+    setCountries([...countries, newCountry]);
+  };
+
   const totalGold = countries.reduce((sum, c) => sum + c.gold, 0);
   const totalSilver = countries.reduce((sum, c) => sum + c.silver, 0);
   const totalBronze = countries.reduce((sum, c) => sum + c.bronze, 0);
@@ -53,8 +66,13 @@ function App() {
         <p>🥇 Gold: {totalGold}</p>
         <p>🥈 Silver: {totalSilver}</p>
         <p>🥉 Bronze: {totalBronze}</p>
-        <p><strong>🏆 Total Medals: {grandTotal}</strong></p>
+        <p>
+          <strong>🏆 Total Medals: {grandTotal}</strong>
+        </p>
       </div>
+
+      {/* New Country Form */}
+      <NewCountry onAdd={addCountry} />
 
       <div className="countries-list">
         {countries.map((country) => (

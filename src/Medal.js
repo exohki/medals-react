@@ -4,10 +4,9 @@ import "./App.css";
 function Medal({ medal, count, countryId, onIncrement, onDecrement }) {
   return (
     <div className="medal-card">
-      <p>
-        {medal.name.charAt(0).toUpperCase() + medal.name.slice(1)}:{" "}
-        <strong>{count}</strong>
-      </p>
+      <span>
+        {medal.name.charAt(0).toUpperCase() + medal.name.slice(1)}: {count}
+      </span>
       <div className="button-group">
         <button
           className={`medal-button ${medal.name}`}
