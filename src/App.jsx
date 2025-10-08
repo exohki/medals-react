@@ -6,6 +6,7 @@ import { fetchCountries, addCountry, deleteCountry, patchCountry } from "./api";
 import LoginDialog from "./components/LoginDialog";
 import TooltipWrap from "./components/TooltipWrap";
 import { ToastContext } from "./components/ToastProvider";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -49,46 +50,46 @@ function App() {
   };
 
   const handleIncrement = async (countryId, medalType) => {
-  setCountries((prev) =>
-    prev.map((c) =>
-      c.id === countryId ? { ...c, [medalType]: c[medalType] + 1 } : c
-    )
-  );
+    setCountries((prev) =>
+      prev.map((c) =>
+        c.id === countryId ? { ...c, [medalType]: c[medalType] + 1 } : c
+      )
+    );
 
-  const updated = countries.find((c) => c.id === countryId);
-  if (updated && user?.token) {
-    try {
-      await patchCountry(
-        { ...updated, [medalType]: updated[medalType] + 1 },
-        user.token
-      );
-    } catch {
-      notify("Failed to save medal change");
+    const updated = countries.find((c) => c.id === countryId);
+    if (updated && user?.token) {
+      try {
+        await patchCountry(
+          { ...updated, [medalType]: updated[medalType] + 1 },
+          user.token
+        );
+      } catch {
+        notify("Failed to save medal change");
+      }
     }
-  }
-};
+  };
 
-const handleDecrement = async (countryId, medalType) => {
-  setCountries((prev) =>
-    prev.map((c) =>
-      c.id === countryId && c[medalType] > 0
-        ? { ...c, [medalType]: c[medalType] - 1 }
-        : c
-    )
-  );
+  const handleDecrement = async (countryId, medalType) => {
+    setCountries((prev) =>
+      prev.map((c) =>
+        c.id === countryId && c[medalType] > 0
+          ? { ...c, [medalType]: c[medalType] - 1 }
+          : c
+      )
+    );
 
-  const updated = countries.find((c) => c.id === countryId);
-  if (updated && user?.token && updated[medalType] > 0) {
-    try {
-      await patchCountry(
-        { ...updated, [medalType]: updated[medalType] - 1 },
-        user.token
-      );
-    } catch {
-      notify("Failed to save medal change");
+    const updated = countries.find((c) => c.id === countryId);
+    if (updated && user?.token && updated[medalType] > 0) {
+      try {
+        await patchCountry(
+          { ...updated, [medalType]: updated[medalType] - 1 },
+          user.token
+        );
+      } catch {
+        notify("Failed to save medal change");
+      }
     }
-  }
-};
+  };
 
   const logout = () => {
     localStorage.removeItem("auth");
@@ -104,18 +105,21 @@ const handleDecrement = async (countryId, medalType) => {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>🏅 Olympic Medals 🏅</h1>
-        {user ? (
-          <TooltipWrap label={`Logged in as ${user.username}`}>
-            <button className="btn" onClick={logout}>
-              🚪 Logout
-            </button>
-          </TooltipWrap>
-        ) : (
-          <TooltipWrap label="Login to enable adding/deleting countries">
-            <LoginDialog onLogin={setUser} />
-          </TooltipWrap>
-        )}
+        <ThemeToggle />
+        <h1 className="title">🏅 Olympic Medals 🏅</h1>
+        <div className="auth-controls">
+          {user ? (
+            <TooltipWrap label={`Logged in as ${user.username}`}>
+              <button className="auth-btn logout" onClick={logout}>
+                🚪 Logout
+              </button>
+            </TooltipWrap>
+          ) : (
+            <TooltipWrap label="Login to add or edit countries">
+              <LoginDialog onLogin={setUser} className="auth-btn" />
+            </TooltipWrap>
+          )}
+        </div>
       </header>
 
       <section className="overall-totals">

@@ -1,12 +1,53 @@
-/* ===================== GLOBAL ===================== */
+/* THEME  */
+
+:root {
+  /* Light mode */
+  --bg-gradient: linear-gradient(135deg, #e0eafc, #cfdef3);
+  --text-color: #222;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --border-color: #e0e0e0;
+
+  --button-primary: linear-gradient(135deg, #4a90e2, #357ab8);
+  --button-hover: linear-gradient(135deg, #3c7edb, #2d65b0);
+
+  --gold-gradient: linear-gradient(145deg, #ffd700, #ffcc33);
+  --silver-gradient: linear-gradient(145deg, #d4d4d4, #bfbfbf);
+  --bronze-gradient: linear-gradient(145deg, #cd7f32, #b0662b);
+
+  --input-bg: #fff;
+  --input-border: #ccc;
+}
+
+/* ---------------- DARK MODE ---------------- */
+[data-theme='dark'] {
+  --bg-gradient: linear-gradient(145deg, #1a1a1a, #232526);
+  --text-color: #e4e6eb;
+  --card-bg: #2a2c2e;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --border-color: #3a3a3a;
+
+  --button-primary: linear-gradient(145deg, #5588e8, #3a6fc2);
+  --button-hover: linear-gradient(145deg, #4875da, #345eae);
+
+  --gold-gradient: linear-gradient(145deg, #ffde74, #d4af37);
+  --silver-gradient: linear-gradient(145deg, #c0c0c0, #a6a6a6);
+  --bronze-gradient: linear-gradient(145deg, #d08b58, #8c6239);
+
+  --input-bg: #3a3a3a;
+  --input-border: #555;
+}
+
+/*  BASE ELEMENTS */
 
 body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  background: var(--bg-gradient);
   margin: 0;
   padding: 0;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 .app-container {
@@ -14,7 +55,7 @@ body {
   padding: 3rem 1.5rem;
 }
 
-/* ===================== HEADER & AUTH AREA ===================== */
+/*  HEADER & AUTH AREA */
 
 .app-header {
   position: relative;
@@ -26,7 +67,7 @@ body {
 }
 
 .title {
-  color: #1a1a1a;
+  color: var(--text-color);
   margin-bottom: 2.5rem;
   font-size: 3rem;
   font-weight: 600;
@@ -43,7 +84,7 @@ body {
 }
 
 .auth-btn {
-  background: linear-gradient(135deg, #4a90e2, #357ab8);
+  background: var(--button-primary);
   color: #fff;
   border: none;
   border-radius: 14px;
@@ -58,7 +99,7 @@ body {
 .auth-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, #3c7edb, #2d65b0);
+  background: var(--button-hover);
 }
 
 .auth-btn.logout {
@@ -70,7 +111,7 @@ body {
   box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
 }
 
-/* ===================== TOTALS & COUNTRIES ===================== */
+/*  TOTALS & COUNTRIES */
 
 .countries-list {
   display: flex;
@@ -80,35 +121,38 @@ body {
 }
 
 .overall-totals {
-  background: #ffffff;
+  background: var(--card-bg);
   padding: 1.5rem 2rem;
   margin-bottom: 2rem;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px var(--shadow-color);
+  border: 1px solid var(--border-color);
   display: inline-block;
   text-align: left;
   font-weight: 500;
   min-width: 300px;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ===================== COUNTRY CARDS ===================== */
+/* COUNTRY CARDS */
 
 .country-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 2rem 1.5rem;
   width: 300px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px var(--shadow-color);
+  border: 1px solid var(--border-color);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
 }
 
 .country-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 30px var(--shadow-color);
 }
 
-/* ===================== MEDALS ===================== */
+/* MEDALS */
 
 .medals-container {
   display: flex;
@@ -123,8 +167,9 @@ body {
   align-items: center;
   padding: 0.5rem 1rem;
   border-radius: 12px;
-  background: #f7f9fc;
+  background: var(--card-bg);
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
+  transition: background 0.4s ease;
 }
 
 .button-group {
@@ -144,17 +189,17 @@ body {
 }
 
 .medal-button.gold {
-  background: linear-gradient(145deg, #ffd700, #ffcc33);
+  background: var(--gold-gradient);
   color: #333;
 }
 
 .medal-button.silver {
-  background: linear-gradient(145deg, #d4d4d4, #bfbfbf);
+  background: var(--silver-gradient);
   color: #333;
 }
 
 .medal-button.bronze {
-  background: linear-gradient(145deg, #cd7f32, #b0662b);
+  background: var(--bronze-gradient);
   color: #fff;
 }
 
@@ -171,7 +216,7 @@ body {
   opacity: 0.6;
 }
 
-/* ===================== DELETE & ADD ===================== */
+/* DELETE & ADD */
 
 .delete-button {
   background-color: #e74c3c;
@@ -216,13 +261,13 @@ body {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* ===================== DIALOGS ===================== */
+/* DIALOGS */
 
 .country-dialog {
   padding: 2rem;
   border: none;
   border-radius: 20px;
-  background: #ffffff;
+  background: var(--card-bg);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   min-width: 320px;
 }
@@ -235,10 +280,13 @@ body {
 
 .country-dialog input {
   padding: 0.8rem;
-  border: 1px solid #ddd;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
   border-radius: 12px;
   font-size: 1rem;
   font-family: inherit;
+  color: var(--text-color);
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 .dialog-actions {
@@ -277,14 +325,15 @@ body {
   transform: scale(1.05);
 }
 
-/* ===================== TOASTS & TOOLTIP ===================== */
+/* TOASTS & TOOLTIP */
 
 .toast-root {
-  background: #fff;
-  color: #111;
+  background: var(--card-bg);
+  color: var(--text-color);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
 }
 
 .toast-viewport {
@@ -294,18 +343,19 @@ body {
 }
 
 .tooltip-content {
-  background: #111;
-  color: #fff;
-  padding: 0.4rem 0.6rem;
+  background: var(--card-bg);
+  color: var(--text-color);
   border-radius: 4px;
   font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.6rem;
 }
 
 .tooltip-arrow {
-  fill: #111;
+  fill: var(--border-color);
 }
 
-/* ===================== DIALOG OVERLAY ===================== */
+/* DIALOG OVERLAY */
 
 .dialog-overlay {
   position: fixed;
@@ -314,7 +364,7 @@ body {
 }
 
 .dialog-content {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
   padding: 1rem;
   position: fixed;
@@ -323,7 +373,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* ===================== RESPONSIVE ===================== */
+/* RESPONSIVE */
 
 @media (max-width: 768px) {
   .auth-controls {
